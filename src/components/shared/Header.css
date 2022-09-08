@@ -1,0 +1,63 @@
+.header {
+    height: 70px;
+}
+
+.header .fixed {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+}
+
+h1.header__logo {
+    font-size: 2rem;
+    color: #f85555;
+    flex: 1 1;
+    font-weight: 700;
+    padding: 14px 20px;
+}
+
+.header_nav {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--light-grey);
+}
+
+ul.header_list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul.header_list li.header_title {
+    width: 50%;
+    list-style: none;
+}
+
+ul.header_list li.header_item {
+    width: 16.66%;
+    list-style: none;
+    border-left: 1px solid var(--light-grey);
+    text-align: center;
+    justify-items: center;
+}
+
+ul.header_list li.header_item:hover {
+    background-color: var(--light-grey);
+    cursor: pointer;
+}
+
+ul.header_list li.active {
+    background-color: var(--light-grey);
+}
+
+.icon {
+    background: none;
+    border: none;
+    color: var(--light-grey);
+    font-size: 1.4rem;
+    line-height: 0;
+    padding: 14px;
+    text-align: center;
+    width: 15%;
+}

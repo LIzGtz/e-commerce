@@ -1,3 +1,37 @@
+:root {
+    --primary: #f85555;
+    --primary2: #fcacac;
+    --light-grey: #dcd9d9;
+    --grey: #c7c7c7;
+    --dark-grey: #4f4f4f;
+    --text-grey: #ababab;
+    --white: #ffffff;
+    --text-color: #515151;
+}
+
+* {
+    box-sizing: border-box;
+    color: var(--text-color);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    color: inherit;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100vh;
+}
+
 .active-link {
     background-color: red;
     color: white;
