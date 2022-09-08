@@ -1,0 +1,74 @@
+.content {
+    flex: 1 1;
+}
+
+.login-container {
+    background-color: hsla(0, 1%, 72%, .1);
+}
+
+.login-container .main-container {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
+form.login {
+    background: var(--white);
+    border-radius: 10px;
+    max-width: 400px;
+    padding: 25px;
+    width: 100%;
+}
+
+form.login strong {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+form.login .input-container {
+    margin-bottom: 20px;
+}
+
+form.login .input-container input {
+    border: 1px solid var(--light-grey);
+    border-radius: 3px;
+    display: block;
+    margin-top: 4px;
+    padding: 6px 8px;
+    width: 100%;
+}
+
+form.login .submit-button {
+    background-color: var(--primary);
+    color: var(--white);
+    margin: 10px 0 25px;
+    padding: 9px;
+    width: 100%;
+}
+
+.switch-forms {
+    font-size: .9rem;
+}
+
+.switch-forms button {
+    background-color: transparent;
+    color: var(--blue);
+    font-size: inherit;
+}
+
+form.login .error-message {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    background-color: var(--primary2);
+    text-align: center;
+}
+
+.login-message {
+    color: var(--blue);
+    margin-bottom: 10px;
+    text-align: center;
+}

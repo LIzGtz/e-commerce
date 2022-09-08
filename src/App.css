@@ -7,6 +7,7 @@
     --text-grey: #ababab;
     --white: #ffffff;
     --text-color: #515151;
+    --blue: #2fa8f8;
 }
 
 * {
@@ -25,6 +26,12 @@ i {
     color: inherit;
 }
 
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
 .app {
     display: flex;
     flex-direction: column;
@@ -36,4 +43,8 @@ i {
     background-color: red;
     color: white;
     font-size: 30px;
+}
+
+.hidden {
+    display: none;
 }
