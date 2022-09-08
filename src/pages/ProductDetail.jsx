@@ -16,11 +16,11 @@ export const ProductDetail = () => {
       .catch(err => console.log(err))
   }, [])
 
-  console.log(productInfo)
+  // console.log(productInfo)
     // productInfo={productInfo}
 
   return (
-    <div>
+    <div className='content'>
       <ProductDescription
         productInfo={productInfo} 
         />

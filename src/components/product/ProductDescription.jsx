@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import History from '../shared/History'
+import './ProductDescription.css'
 
 const ProductDescription = ({ productInfo }) => {
-
     const [counter, setCounter] = useState(1)
 
     const handlePlus = () => setCounter(counter + 1)
@@ -12,28 +13,42 @@ const ProductDescription = ({ productInfo }) => {
         }
     }
 
-
-
     return (
-        <section className='product-info'>
-            <h2 className='product-info_name'>{productInfo?.tittle}</h2>
-            <p className='product-info_description'>{productInfo?.description}</p>
-            <div className='product-info_body'>
-                <article className='product-info_price'>
-                    <span className='product-info_price-value'>{productInfo?.price}</span>
-                </article>
-                <article className='product-info_quantity'>
-                    <h3 className='product-info_quantity'>Quantity</h3>
-                    <div className='product_info_quantity'>
-                        <button onClick={handleMinus}>-</button>
-                        <div>{counter}</div>
-                        <button onClick={handlePlus}>+</button>
+        <article className='product-detail main-container'>
+            <History currentPage={productInfo?.title} />
+            <section className='product-info-flex'>
+                <section className='product-images'>
+                    <img src={productInfo?.productImgs[0]} />
+                </section>
+                <section className='product-info'>
+                    <h2 className='name'>{productInfo?.title}</h2>
+                    <p className='description'>{productInfo?.description}</p>
+                    <div className='options'>
+                        <div className='price'>
+                            <span className='label'>Price</span>
+                            <span className='value'>${productInfo?.price}</span>
+                        </div>
+                        <div className='quantity'>
+                            <span className='label'>Quantity</span>
+                            <div className='flex'>
+                                <button disabled={counter == 1} onClick={handleMinus}>
+                                    <i className="fa-solid fa-minus"></i>
+                                </button>
+                                <div className='value'>{counter}</div>
+                                <button onClick={handlePlus}>
+                                    <i className="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-
-                </article>
-
-            </div>
-        </section>
+                    <button className='add-cart-button'>
+                        Add to Cart&nbsp;
+                        <i className="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    
+                </section>
+            </section>
+        </article>
     )
 }
 
