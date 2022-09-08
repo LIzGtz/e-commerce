@@ -61,3 +61,41 @@ ul.header_list li.active {
     text-align: center;
     width: 15%;
 }
+
+.cart-modal {
+    position: fixed;
+    right: -300px;
+    top: 60px;
+    bottom: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 300px;
+    background: #fff;
+    transition: .5s all;
+    z-index: 9;
+}
+
+.cart-modal.open {
+    right: 0;
+}
+
+@media (min-width: 992px) {
+    .navbar nav .title {
+        font-size: 2rem;
+    }
+
+    .navbar nav {
+        border-bottom: 1px solid var(--light-grey);
+    }
+
+    .navbar {
+        height: 70px;
+    }
+
+    .cart-modal {
+        top: 70px;
+    }
+
+    .navbar nav .icon {
+        border-left: 1px solid var(--light-grey);
+    }
+}

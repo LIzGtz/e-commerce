@@ -1,8 +1,22 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import Cart from './Cart';
 import './Header.css'
 
 const Header = () => {
+  const [ isCartOpen, setIsCartOpen ] = useState(false);
+  const navigate = useNavigate();
+
+  const onOpenCartClick = (e) => {
+    console.log("display cart");
+    setIsCartOpen(true);
+    // if (sessionStorage.getItem("token")) {
+    //   setIsCartOpen(!isCartOpen);
+    // } else {
+    //   navigate("/login");
+    // }
+  };
+
   return (
     <header className='header'>
       <nav className="header_nav">
@@ -17,21 +31,27 @@ const Header = () => {
           </li>
           <li className="header_item icon active">
             <NavLink className="" to="/login">
-              <i class="fa-solid fa-user"></i>
+              <i className="fa-solid fa-user"></i>
             </NavLink>
           </li>
           <li className="header_item icon">
             <NavLink className="" to="/purchases">
-              <i class="fa-solid fa-box-archive"></i>
+              <i className="fa-solid fa-box-archive"></i>
             </NavLink>
           </li>
           <li className="header_item icon">
-            <NavLink className="" to="/cart">
-              <i class="fa-solid fa-cart-shopping"></i>
-            </NavLink>
+            <div onClick={onOpenCartClick}>
+              <i className="fa-solid fa-cart-shopping"></i>
+            </div>
           </li>
         </ul>
       </nav>
+      <div className={`cart-modal ${isCartOpen ? 'open' : ''}`}>
+        <Cart handleClose={() => setIsCartOpen(false)} />
+      </div>
+      { isCartOpen && 
+        <div className='overlay' onClick={() => setIsCartOpen(false)}></div>
+      }
     </header>
   );
 };
