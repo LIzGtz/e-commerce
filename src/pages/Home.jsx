@@ -1,21 +1,25 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../store/slices/products.slice'
-import CardHome from '../components/home/CardHome'
+import ProductCard from '../components/product/ProductCard'
 import './Home.css'
 import Filters from '../components/home/Filters'
 
 export const Home = () => {
+  const [searchValue, setSearchValue] = useState('');
 
   const dispatch = useDispatch()
+  const products = useSelector(state => state.products)
 
   useEffect(() => {
     dispatch(getAllProducts())
-
+    console.log(products)
   }, [])
 
-  const products = useSelector(state => state.products)
 
+  const onSearchFieldChange = (e) => {
+    setSearchValue(e.target.value);
+  }
 
   return (
     <div className='content'>
@@ -28,23 +32,28 @@ export const Home = () => {
         <div className='main-container'>
           <div className='search-box'>
             <form>
-              <input type='text' placeholder='What are you looking for?' value=''></input>
+              <input
+                type='text'
+                placeholder='What are you looking for?'
+                value={searchValue}
+                onChange={onSearchFieldChange}
+              />
               <button>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
           </div>
-        </div>
-        <div className='home__container-card'>
-          {
-            products?.map(product => {
-              <CardHome
-                key={product.id}
-                product={product}
-              />
-            })
-          }
+          <div className='product-list'>
+            {
+              products?.map(product => {
+                return (<ProductCard
+                  key={product.id}
+                  product={product}
+                />)
+              })
+            }
 
+          </div>
         </div>
 
       </div>

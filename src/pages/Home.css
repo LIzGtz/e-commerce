@@ -46,8 +46,18 @@
     line-height: 1;
 }
 
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-list .product-container {
+    padding: 20px 10px;
+    width: 100%;
+}
+
 @media (min-width: 576px) {
-    .products-list li {
+    .product-list .product-container {
         width: 50%;
     }
 }
@@ -84,13 +94,13 @@
 }
 
 @media (min-width: 1200px) {
-    .products-list li {
+    .product-list .product-container {
         width: 33.33%;
     }
 }
 
 @media (min-width: 1300px) {
-    .products-list li {
+    .product-list .product-container {
         padding: 30px;
     }
 
