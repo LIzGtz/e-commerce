@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import ProductDescription from '../productDetail/ProductDescription'
+import ProductDescription from '../components/product/ProductDescription'
 
 export const ProductDetail = () => {
 
