@@ -10,25 +10,25 @@ import axios from 'axios'
 
 function App() {
 
-  useEffect(() => {
-    const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users'
-    const obj = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      phone: '',
-      role: '',
+  // useEffect(() => {
+  //   const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/users'
+  //   const obj = {
+  //     firstName: '',
+  //     lastName: '',
+  //     email: '',
+  //     password: '',
+  //     phone: '',
+  //     role: '',
 
-    }
-  axios.post()
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err))
-  }, [])
+  //   }
+  // axios.post()
+  //   .then(res => console.log(res.data))
+  //   .catch(err => console.log(err))
+  // }, [])
 
-  useEffect(
+  // useEffect(
 
-  )
+  // )
 
   return (
     <div className='app'>

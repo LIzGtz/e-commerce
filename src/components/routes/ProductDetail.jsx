@@ -17,7 +17,7 @@ export const ProductDetail = () => {
   }, [])
 
   console.log(productInfo)
-    productInfo={productInfo}
+    // productInfo={productInfo}
 
   return (
     <div>
