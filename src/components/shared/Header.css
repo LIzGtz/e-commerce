@@ -1,8 +1,8 @@
-.header {
+header.header {
     height: 70px;
 }
 
-.header .fixed {
+header.fixed {
     left: 0;
     position: fixed;
     right: 0;

@@ -4,7 +4,7 @@ import './Header.css'
 
 const Header = () => {
   return (
-    <header className='header fixed'>
+    <header className='header'>
       <nav className="header_nav">
         <ul className="header_list">
           {/* <li className="header_item"><NavLink className={({ isActive }) => isActive && 'active-link' } to='/login' >Login</NavLink></li>
