@@ -9,8 +9,11 @@ const Header = () => {
       </NavLink>
       <nav className="header_nav">
         <ul className="header_list">
-          <li className="header_item"><NavLink className='header_link' to='/login' >Login</NavLink></li>
-          <li className="header_item"><NavLink className='header_link' to='/purchases' >Purchases</NavLink></li>
+          {/* <li className="header_item"><NavLink className={({ isActive }) => isActive && 'active-link' } to='/login' >Login</NavLink></li>
+          <li className="header_item"><NavLink className={({ isActive }) => isActive && 'active-link' } to='/purchases' >Purchases</NavLink></li> 
+          */}
+          <li className="header_item"><NavLink className='active-link' to='/login' >Login</NavLink></li>
+          <li className="header_item"><NavLink className='active-link' to='/purchases' >Purchases</NavLink></li>
           <li className="header_item"><h2 className='header_link'>Cart</h2></li>
         </ul>
       </nav>
