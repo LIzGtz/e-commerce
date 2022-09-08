@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllProducts } from '../../store/slices/products.slice'
 import History from '../shared/History'
+import ProductCard from './ProductCard'
 import './ProductDescription.css'
 
-const ProductDescription = ({ productInfo }) => {
+const ProductDescription = ({ productInfo, similarProducts }) => {
     const [counter, setCounter] = useState(1)
+    const dispatch = useDispatch();
+    // const products = useSelector(state => state.products);
+
+    // useEffect(() => {
+    //     if (productInfo) {
+    //         dispatch(getAllProducts(productInfo.category?.id))
+    //     }
+    // }, [productInfo])
 
     const handlePlus = () => setCounter(counter + 1)
 
@@ -47,6 +58,21 @@ const ProductDescription = ({ productInfo }) => {
                     </button>
                     
                 </section>
+            </section>
+            <section className='product-suggestions'>
+                <strong>Discover similar items</strong>
+                <div className='product-list'>
+                    {
+                        similarProducts?.map(product => {
+                            return (
+                                <ProductCard 
+                                    key={product.id}
+                                    product={product}
+                                ></ProductCard>
+                            )
+                        })
+                    }
+                </div>
             </section>
         </article>
     )

@@ -10,14 +10,21 @@ const productsSlice = createSlice({
     }
 })
 
-export const {setProducts} = productsSlice.actions
-
+export const { setProducts } = productsSlice.actions
 
 export default productsSlice.reducer
 
-export const getAllProducts = () => (dispatch) => {
-    const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/products'
-    return axios.get(URL)
+const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/products'
+export const getAllProducts = (category) => (dispatch) => {
+    const configObj = {
+        params: {}
+    };
+
+    if (category) {
+        configObj.params['category'] = category
+    }
+
+    return axios.get(URL, configObj)
         .then(res => dispatch(setProducts(res.data.data.products)))
         .catch(err => console.log(err))
 }
