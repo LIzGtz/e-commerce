@@ -5,12 +5,12 @@
     position: relative;
 }
 
-.product-card > header {
+.product-card > a {
     cursor: pointer;
     display: block;
 }
 
-.product-card > header .image {
+.product-card > a .image {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,7 +19,7 @@
     position: relative;
 }
 
-.product-card > header .image img {
+.product-card > a .image img {
     display: block;
     height: 80%;
     width: 80%;
@@ -27,22 +27,22 @@
     object-fit: contain;
 }
 
-.product-card > header .contents {
+.product-card > a .contents {
     padding: 20px 20px 30px 20px;
 }
 
-.product-card > header .contents * {
+.product-card > a .contents * {
     display: block;
 }
-.product-card > header .contents h3 {
+.product-card > a .contents h3 {
     font-size: 1.3rem;
     margin-bottom: 20px;
     margin-top: 10px;
 }
-.product-card > header .contents .price-label {
+.product-card > a .contents .price-label {
     color: var(--grey);
 }
-.product-card > header .contents .price-value {
+.product-card > a .contents .price-value {
     font-size: 1.2rem;
     font-weight: 600;
     margin-left:  10px;

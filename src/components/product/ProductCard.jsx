@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './ProductCard.css'
 
 const ProductCard = ({ product }) => {
@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
     return (
         <div className='product-container'>
             <article className='product-card'>
-                <header onClick={handleClick}>
+                <Link to={`/products/${product?.id}`}>
                     <div className='image'>
                         <img src={product.productImgs[0]} alt="" />
                     </div>
@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
                         <span className='price-label'>Price</span>
                         <span className='price-value'>${product.price}</span>
                     </div>
-                </header>
+                </Link>
                 <button className='add-cart-button' onClick={onAddToCartClick}>
                     <i className="fa-solid fa-cart-shopping"></i>
                 </button>
