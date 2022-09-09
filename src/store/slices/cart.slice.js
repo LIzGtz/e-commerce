@@ -42,3 +42,12 @@ export const addToCartThunk = (productId, quantity) => (dispatch) => {
     return axios.post(URL, product, options)
                 .then(() => dispatch(getCartThunk()));
 }
+
+export const removeFromCartThunk = (productId) => (dispatch) => {
+    let options = {
+        headers: {}
+    };
+    options.headers = addAuthorizationHeader();
+    return axios.delete(`${URL}/${productId}`, options)
+                .then(() => dispatch(getCartThunk()));
+}

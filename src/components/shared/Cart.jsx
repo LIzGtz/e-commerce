@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getCartThunk } from "../../store/slices/cart.slice";
+import { Link, useNavigate } from "react-router-dom";
+import { getCartThunk, removeFromCartThunk } from "../../store/slices/cart.slice";
 import './Cart.css'
 
 const Cart = ({ handleClose }) => {
@@ -33,7 +33,7 @@ const Cart = ({ handleClose }) => {
                         cart?.products?.map(product => {
                             return (
                                 <li key={product.id}>
-                                    <CartItem handleClose={handleClose} product={product} />
+                                    <CartItem key={product.id} handleClose={handleClose} product={product} />
                                 </li>
                             )
                         })
@@ -52,6 +52,17 @@ const Cart = ({ handleClose }) => {
 }
 
 const CartItem = ({ product, handleClose }) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const removeFromCartClick = () => {
+        if (sessionStorage.getItem('login.token')) {
+            dispatch(removeFromCartThunk(product.id));
+        } else {
+            navigate("/login");
+        }
+    }
+
     return (
         <>
             <div className="product-info">
@@ -69,7 +80,7 @@ const CartItem = ({ product, handleClose }) => {
                     </div>
                 </div>
                 <div className="button-delete">
-                    <button onClick={() => console.log("remove from cart")}>
+                    <button onClick={removeFromCartClick}>
                         <i className="fa-solid fa-trash-can"></i>
                     </button>
                 </div>
