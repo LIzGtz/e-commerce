@@ -15,13 +15,17 @@ export const { setProducts } = productsSlice.actions
 export default productsSlice.reducer
 
 const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/products'
-export const getAllProducts = (category) => (dispatch) => {
+export const getAllProducts = ({category, filter}) => (dispatch) => {
     const configObj = {
         params: {}
     };
 
     if (category) {
         configObj.params['category'] = category
+    }
+
+    if (filter) {
+        configObj.params['query'] = filter
     }
 
     return axios.get(URL, configObj)

@@ -23,7 +23,7 @@ export const ProductDetail = () => {
   }, [id, dispatch, products]);
 
   useEffect(() => {
-    dispatch(getAllProducts())
+    dispatch(getAllProducts({}))
     // console.log(products)
   }, [dispatch])
   // useEffect(() => {
