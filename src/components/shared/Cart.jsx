@@ -1,21 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getCartThunk } from "../../store/slices/cart.slice";
 import './Cart.css'
 
 const Cart = ({ handleClose }) => {
-    let total = 10;
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getCartThunk())
+    }, [dispatch]);
+
+    const cart = useSelector(state => state.cart);
+
     const onCheckoutClick = () => {
         console.log('checkout');
     }
 
+    let total = 0;
+    total = cart?.products?.reduce((actual, current) => {
+        if (typeof actual !== 'number') {
+            return (+actual.price * actual.productsInCart?.quantity) + (+current.price * current.productsInCart?.quantity);
+        }
+        return actual + (current.productsInCart?.quantity * +current.price);
+    });
     return (
         <div className="cart">
             <div className="scrollable">
                 <h4>Shopping cart</h4>
                 <ul className="cart-products-list">
-                    <li >
-                        <CartItem handleClose={handleClose} product={{ id: 1, title: 'Test', price: 10, productsInCart: { quantity: 3 } }} />
-                    </li>
+                    {
+                        cart?.products?.map(product => {
+                            return (
+                                <li key={product.id}>
+                                    <CartItem handleClose={handleClose} product={product} />
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
             <div className="checkout-section">
