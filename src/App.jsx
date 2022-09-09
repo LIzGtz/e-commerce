@@ -1,5 +1,5 @@
 import Header from './components/shared/Header'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
@@ -36,8 +36,11 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/purchases' element={<Purchases />} />
         <Route path='/product/:id' element={<ProductDetail />} />
+        <Route element={sessionStorage.getItem('login.token') ? <Outlet /> : <Navigate to="/login" />}>
+          <Route path='/purchases' element={<Purchases />} />
+          
+        </Route>
       </Routes>
     </div>
   )
