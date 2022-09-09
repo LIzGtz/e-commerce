@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../../store/slices/products.slice'
+import { addToCartThunk } from '../../store/slices/cart.slice'
 import History from '../shared/History'
 import ProductCard from './ProductCard'
 import './ProductDescription.css'
@@ -21,6 +21,14 @@ const ProductDescription = ({ productInfo, similarProducts }) => {
     const handleMinus = () => {
         if (counter - 1 >= 1) {
             setCounter(counter - 1)
+        }
+    }
+
+    const addToCartClick = () => {
+        if (sessionStorage.getItem('login.token')) {
+            dispatch(addToCartThunk(productInfo.id, counter));
+        } else {
+            navigate("/login");
         }
     }
 
@@ -52,7 +60,7 @@ const ProductDescription = ({ productInfo, similarProducts }) => {
                             </div>
                         </div>
                     </div>
-                    <button className='add-cart-button'>
+                    <button className='add-cart-button' onClick={addToCartClick}>
                         Add to Cart&nbsp;
                         <i className="fa-solid fa-cart-shopping"></i>
                     </button>
