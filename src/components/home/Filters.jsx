@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductCategories } from "../../store/slices/categories.slice";
+import { getAllProducts } from "../../store/slices/products.slice";
 import './Filters.css'
 
 const Filters = () => {
     const [priceFrom, setPriceFrom] = useState();
     const [priceTo, setPriceTo] = useState();
+
+    const dispatch = useDispatch();
+    const categories = useSelector(state => state.categories);
+
+    useEffect(() => {
+        dispatch(getProductCategories());
+    }, [dispatch]);
 
     const selectPrice = () => {
 
@@ -37,12 +47,13 @@ const Filters = () => {
                 </div>
                 <div className="content">
                     <ul className="category-filter">
-                        <li>
-                            <button>TVs</button>
-                        </li>
-                        <li>
-                            <button>Laptops</button>
-                        </li>
+                        {
+                            categories?.map(cat => {
+                                return (
+                                    <li key={cat.id}><button onClick={() => dispatch(getAllProducts({ category: cat.id }))}>{cat.name}</button></li>
+                                )
+                            })
+                        }
                     </ul>
                 </div>
             </div>
