@@ -14,12 +14,13 @@ export const { setCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
 
+const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/cart';
 export const getCartThunk = () => (dispatch) => {
     let options = {
         headers: {}
     };
     options.headers = addAuthorizationHeader();
-    return axios.get('https://ecommerce-api-react.herokuapp.com/api/v1/cart', options)
+    return axios.get(URL, options)
                 .then(response => {
                     dispatch(setCart(response.data.data.cart));
                 })
@@ -30,3 +31,14 @@ export const getCartThunk = () => (dispatch) => {
                     }
                 });
 };
+
+export const addToCartThunk = (productId, quantity) => (dispatch) => {
+    const product = { id: productId, quantity: quantity };
+    let options = {
+        headers: {}
+    };
+    options.headers = addAuthorizationHeader();
+
+    return axios.post(URL, product, options)
+                .then(() => dispatch(getCartThunk()));
+}

@@ -1,17 +1,24 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
+import { addToCartThunk } from '../../store/slices/cart.slice';
 import './ProductCard.css'
 
 const ProductCard = ({ product }) => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleClick = () => {
         navigate(`/product/${product.id}`)
     }
 
     const onAddToCartClick = () => {
-        console.log('add to cart: ', product)
+        if (sessionStorage.getItem('login.token')) {
+            dispatch(addToCartThunk(product.id, 1));
+        } else {
+            navigate("/login");
+        }
     }
 
     return (
