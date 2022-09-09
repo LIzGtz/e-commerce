@@ -15,7 +15,7 @@ export const { setProducts } = productsSlice.actions
 export default productsSlice.reducer
 
 const URL = 'https://ecommerce-api-react.herokuapp.com/api/v1/products'
-export const getAllProducts = ({category, filter}) => (dispatch) => {
+export const getAllProducts = ({ category, filter, priceFrom, priceTo }) => (dispatch) => {
     const configObj = {
         params: {}
     };
@@ -29,6 +29,12 @@ export const getAllProducts = ({category, filter}) => (dispatch) => {
     }
 
     return axios.get(URL, configObj)
-        .then(res => dispatch(setProducts(res.data.data.products)))
+        .then(res => {
+            let products = res.data.data.products;
+            if (priceFrom && priceTo) {
+                products = products?.filter(p => +p.price >= priceFrom && +p.price <= priceTo);
+            }
+            dispatch(setProducts(products));
+        })
         .catch(err => console.log(err))
 }
